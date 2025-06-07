@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
@@ -6,8 +7,6 @@ from django.contrib import messages
 
 from .forms import ProductModelForm
 from .models import Product, Category
-from .tasks import add_product
-
 
 def index(request):
     return render(request, "store_app/index.html")
@@ -46,10 +45,9 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = 'store_app/add_product.html'
     form_class = ProductModelForm
-    success_url = reverse_lazy('products')
+    success_url = reverse_lazy('product')
 
     def form_valid(self, form):
-        add_product.delay(form.data.get("name"))
         messages.success(self.request, 'Товар успешно создан')
         return super().form_valid(form)
 

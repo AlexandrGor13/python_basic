@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store_app.apps.StoreAppConfig',
-    'django_celery_results',
-    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -123,18 +121,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-
-CELERY_RESULT_BACKEND = 'django-db'
-CELERY_TASK_IGNORE_RESULT = False
-
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.mail.ru'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HST_USER = 'user_send@mail.ru'
-# EMAIL_HOST_PASSWORD = 'your_password'
