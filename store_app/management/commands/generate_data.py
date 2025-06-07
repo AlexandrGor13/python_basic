@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from store_app.models import Product, Category
 from faker import Faker
+from store_app.models import Product, Category
 
 
 class Command(BaseCommand):

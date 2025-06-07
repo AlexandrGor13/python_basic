@@ -1,6 +1,6 @@
 import pytest
 from django.urls import reverse
-from store_app.models import Product, Category
+from store_app.models import Product
 
 
 def test_index(client):
