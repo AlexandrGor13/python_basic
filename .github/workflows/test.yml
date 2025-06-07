@@ -22,4 +22,4 @@ jobs:
         uv sync
     - name: Run Tests
       run: |
-        uv run pytest -s --cov --cov-report html --cov-fail-under 88
+        pytest -s --cov --cov-report html --cov-fail-under 88
