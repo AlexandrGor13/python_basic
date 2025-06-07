@@ -10,26 +10,16 @@ jobs:
         python-version: [3.11, 3.12]
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Установить uv
-        uses: astral-sh/setup-uv@v3
-      - name: Настроить Python
-        run: uv python install
-      - name: Установить проект
-        run: uv sync --all-extras --dev
-      - name: Запустить тесты
-        run: uv run pytest -s --cov --cov-report html --cov-fail-under 88
-
-#    - uses: actions/checkout@v4
-#    - name: Set up Python ${{ matrix.python-version }}
-#      uses: actions/setup-python@v3
-#      with:
-#        python-version: ${{ matrix.python-version }}
-#    - name: Install Dependencies
-#      run: |
-#        python -m pip install --upgrade pip
-#        pip install uv
-#        uv sync
-#    - name: Run Tests
-#      run: |
-#        uv run pytest -s --cov --cov-report html --cov-fail-under 88
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+        poetry install
+    - name: Run Tests
+      run: |
+        poetry run pytest -s --cov --cov-report html --cov-fail-under 88

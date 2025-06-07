@@ -1,25 +1,33 @@
 [project]
-name = "homework12"
+name = "python-basic"
 version = "0.1.0"
-description = "Add your description here"
+description = ""
+authors = [
+    {name = "Alexandr",email = "gorbenich@gmail.com"}
+]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "celery[redis]>=5.5.3",
-    "django>=5.2",
-    "django-celery-beat>=2.8.1",
-    "django-celery-results>=2.6.0",
-    "factory-boy>=3.3.3",
+    "django (>=5.2,<6.0)",
+    "faker (>=37.1.0,<38.0.0)",
+    "factory-boy (>=3.3.3,<4.0.0)",
 ]
 
-[dependency-groups]
-dev = [
-    "pylint>=3.3.7",
-    "pytest-cov>=6.1.1",
-]
-test = [
-    "beautifulsoup4>=4.13.4",
-    "pytest>=8.3.5",
-    "pytest-django>=4.11.1",
-    "pytest-mock>=3.14.0",
-]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.5"
+pytest-django = "^4.11.1"
+pytest-mock = "^3.14.0"
+beautifulsoup4 = "4.13.4"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^6.1.1"
+pylint = "^3.3.7"
+
+[tool.poetry]
+package-mode = false
